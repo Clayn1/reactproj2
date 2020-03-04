@@ -44,6 +44,11 @@ class App extends React.Component {
         const {darkTheme} = this.state;
         this.setState({darkTheme: !darkTheme})
     };
+    delete = (user) => {
+        let {data} = this.state;
+        data.splice(data.indexOf(data.indexOf(user), 1));
+        this.setState({data: data})
+    };
 
     componentDidMount() {
         fetch("https://jsonplaceholder.typicode.com/users")
@@ -66,10 +71,12 @@ class App extends React.Component {
                     {data
                         ? data.map(user => <Card user={user}
                                                  key={user.id}
-                                                 itemHandlers={{inc: this.incItems, decr: this.decrItems}}/>)
+                                                 deleteHandler={this.delete}
+                                                 itemHandlers={{inc: this.incItems, decr: this.decrItems}}
+                                                 data={data}/>)
                         : <h1>Loading...</h1>}
                 </ThemeContext.Provider>
-                <Form onClick={this.newElement}/>
+                <Form onClick={this.newElement} data={data}/>
             </div>
         );
     }

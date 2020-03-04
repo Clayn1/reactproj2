@@ -1,15 +1,20 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Card from "../card/Card";
 import ButtonX from "../button/ButtonX";
 
-function Form({onClick}) {
+function Form({onClick,data}) {
+    //const [value,setValue] = useState(10)
     const myClick = (event) => {
+        //setValue(value+1)
+        //console.log("value");
+        //console.log(value);
         event.preventDefault();
         onClick({
             name: document.getElementById('someForm').name.value,
             username: document.getElementById('someForm').username.value,
             phone: document.getElementById('someForm').phone.value,
-            address: document.getElementById('someForm').address.value
+            address: document.getElementById('someForm').address.value,
+            id: parseInt(data[data.length-1].id) + 1
         })
     };
     return (

@@ -1,6 +1,7 @@
 import ButtonX from "../button/ButtonX";
 import React, {Component} from 'react';
 import {ThemeContext} from "../../context/ThemeContext";
+import DeleteButton from "../button/DeleteButton";
 
 class Card extends Component {
     state = {
@@ -12,6 +13,10 @@ class Card extends Component {
         open ? itemHandlers.inc() : itemHandlers.decr();
         this.setState({open: !open})
     };
+    delete = () => {
+        const {deleteHandler,user} = this.props;
+        deleteHandler(user)
+    };
 
     render() {
         const {user} = this.props;
@@ -19,6 +24,7 @@ class Card extends Component {
         return (
             <div key={user.id} className="card" style={{width: '18rem', float: 'left', height: '15rem'}}>
                 <ButtonX open={open} closeFunc={this.close} style={{width: '25px', position: 'absolute', right: '0%'}}/>
+                <DeleteButton onClick = {this.delete} />
                 <ThemeContext.Consumer>
                     {
                         value => {
