@@ -46,7 +46,7 @@ class App extends React.Component {
     };
     delete = (user) => {
         let {data} = this.state;
-        data.splice(data.indexOf(data.indexOf(user), 1));
+        data.splice(data.indexOf(user),1);
         this.setState({data: data})
     };
 
@@ -61,7 +61,7 @@ class App extends React.Component {
 
     render() {
         const {data, items} = this.state;
-        console.log(data);
+        //console.log(data);
         return (
             <div className="App">
                 <Header items={items} funcs={{sortByName: this.sortByName,
