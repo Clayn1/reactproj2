@@ -47,7 +47,7 @@ class App extends React.Component {
     };
     delete = (user) => {
         let {data} = this.state;
-        data.splice(data.indexOf(data.indexOf(user), 1));
+        data.splice(data.indexOf(user),1);
         this.setState({data: data})
     };
 
