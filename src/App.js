@@ -6,6 +6,7 @@ import Card from "./components/card/Card";
 import ButtonX from "./components/button/ButtonX";
 import Form from "./components/form/Form";
 import {ThemeContext} from "./context/ThemeContext";
+import fetchData from "./fetchData";
 
 
 class App extends React.Component {
@@ -51,17 +52,19 @@ class App extends React.Component {
     };
 
     componentDidMount() {
-        fetch("https://jsonplaceholder.typicode.com/users")
-            .then(response => response.json())
-            .then(result => {
-                console.log(result);
-                this.setState({data: result})
-            })
+        const {fetchData} = this.props;
+        // fetch("https://jsonplaceholder.typicode.com/users")
+        //     .then(response => response.json())
+        //     .then(result => {
+        //         console.log(result);
+        //         this.setState({data: result})
+        //     })
+        fetchData().then(result => this.setState({data : result}));
     }
 
     render() {
         const {data, items} = this.state;
-        console.log(data);
+        console.log(this.props);
         return (
             <div className="App">
                 <Header items={items} funcs={{sortByName: this.sortByName,
@@ -82,4 +85,4 @@ class App extends React.Component {
     }
 }
 
-export default App;
+export default fetchData(App);
