@@ -37,9 +37,7 @@ class App extends React.Component {
         this.setState({items: items - 1})
     };
     newElement = (user) => {
-        let {data} = this.state;
-        data.push(user);
-        this.setState({data: data})
+        this.setState({data: [...this.state.data,user]});
     };
     changeTheme = () => {
         const {darkTheme} = this.state;

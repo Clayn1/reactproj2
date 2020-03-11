@@ -13,7 +13,7 @@ function Form({onClick,data}) {
             name: document.getElementById('someForm').name.value,
             username: document.getElementById('someForm').username.value,
             phone: document.getElementById('someForm').phone.value,
-            address: document.getElementById('someForm').address.value,
+            address: {city: document.getElementById('someForm').address.value},
             id: parseInt((data[data.length-1] || {id:0}).id) + 1 || 1
         })
     };
